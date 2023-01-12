@@ -2,6 +2,10 @@ const root = "/";
 const operation = "operation";
 const settings = "settings";
 
+const pathParams = {
+  operationSlug: ":operationId",
+};
+
 const path = (...pieces: string[]) => ["", ...pieces].join("/");
 
 const ROUTES = {
@@ -10,6 +14,10 @@ const ROUTES = {
   OPERATION: {
     _ROOT: operation,
     _PATH: path(operation),
+    BY_ID: {
+      _ROOT: pathParams.operationSlug,
+      _PATH: path(operation, pathParams.operationSlug),
+    },
   },
   PROFITABILITY: {
     _ROOT: settings,
