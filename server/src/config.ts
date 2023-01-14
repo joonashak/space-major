@@ -8,5 +8,6 @@ export const SSO_SECRET_KEY = process.env.SSO_SECRET_KEY;
 export const ENABLE_DEVTOOLS = process.env.ENABLE_DEVTOOLS === "true";
 export const NOT_PRODUCTION = NODE_ENV !== "production";
 export const CLIENT_URL = process.env.CLIENT_URL;
+export const PORT = process.env.PORT || 3001;
 
 export const getClientLoginCallbackUrl = (state: string) => `${CLIENT_URL}/login/${state}`;

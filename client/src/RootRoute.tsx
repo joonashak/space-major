@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import MenuBar from "./common/MenuBar";
 import PublicView from "./views/PublicView";
 
-const loggedIn = true;
+const loggedIn = false;
 
 const RootRoute = () =>
   loggedIn ? (
