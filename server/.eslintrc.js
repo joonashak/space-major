@@ -6,10 +6,7 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["@typescript-eslint/eslint-plugin"],
-  extends: [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-  ],
+  extends: ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
   root: true,
   env: {
     node: true,
@@ -21,10 +18,15 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    quotes: [
+    // Don't error for resolver decorator type annotations:
+    "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "type|returns|of|unused" }],
+    quotes: ["error", "double", { avoidEscape: true, allowTemplateLiterals: false }],
+    "prettier/prettier": [
       "error",
-      "double",
-      { avoidEscape: true, allowTemplateLiterals: false },
+      {
+        semi: true,
+        printWidth: 100,
+      },
     ],
   },
 };
