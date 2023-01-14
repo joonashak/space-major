@@ -3,7 +3,11 @@
   "version": "0.0.1",
   "private": "true",
   "scripts": {
-    "start": "docker compose up --build"
+    "start": "npm run start:d && npm run logs",
+    "start:d": "docker compose up --build -d",
+    "stop": "docker compose down",
+    "restart": "npm stop && npm start",
+    "logs": "docker compose logs -f server client"
   },
   "repository": {
     "type": "git",
