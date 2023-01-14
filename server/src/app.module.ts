@@ -2,12 +2,11 @@ import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { CharacterModule } from "./common/character/character.module";
-import { UserModule } from "./common/user/user.module";
+import { CommonModule } from "./common/common.module";
 import { MONGO_URL } from "./config";
 
 @Module({
-  imports: [MongooseModule.forRoot(MONGO_URL), CharacterModule, UserModule],
+  imports: [MongooseModule.forRoot(MONGO_URL), CommonModule],
   controllers: [AppController],
   providers: [AppService],
 })
