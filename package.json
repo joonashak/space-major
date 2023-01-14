@@ -1,0 +1,19 @@
+{
+  "name": "space-major",
+  "version": "0.0.1",
+  "private": "true",
+  "scripts": {
+    "start": "docker compose up"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joonashak/space-major.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joonashak/space-major/issues"
+  },
+  "homepage": "https://github.com/joonashak/space-major#readme"
+}
