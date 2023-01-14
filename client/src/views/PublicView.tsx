@@ -1,5 +1,11 @@
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
+import LoginButton from "../auth/LoginButton";
 
-const PublicView = () => <Typography>Welcome to Space Major!</Typography>;
+const PublicView = () => (
+  <Container>
+    <Typography>Welcome to Space Major!</Typography>
+    <LoginButton />
+  </Container>
+);
 
 export default PublicView;
