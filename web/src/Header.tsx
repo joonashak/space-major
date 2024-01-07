@@ -5,9 +5,9 @@ const Header = () => (
   <Sheet
     sx={(theme) => ({
       display: "flex",
+      width: "100vw",
       gap: 2,
       p: 1,
-      mb: 2,
       boxShadow: "sm",
       [theme.breakpoints.up("lg")]: { display: "none" },
     })}
