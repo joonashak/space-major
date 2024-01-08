@@ -11,6 +11,7 @@ const Sidebar = () => (
       p: 1,
       mb: 2,
       boxShadow: "sm",
+      bgcolor: theme.palette.neutral[50],
       [theme.breakpoints.up("lg")]: { display: "flex" },
     })}
   >

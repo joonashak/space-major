@@ -1,10 +1,12 @@
-import { Drawer, DrawerProps } from "@mui/joy";
+import { Box, Drawer, DrawerProps } from "@mui/joy";
 import Navigator from "./Navigator";
 
 const MobileMenu = (props: DrawerProps) => {
   return (
     <Drawer anchor="top" {...props}>
-      <Navigator />
+      <Box sx={{ m: 1 }}>
+        <Navigator />
+      </Box>
     </Drawer>
   );
 };
