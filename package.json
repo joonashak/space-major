@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "start": "docker compose up --build -d && docker compose logs server",
+    "start": "docker compose up --build -d && docker compose logs -f server",
     "stop": "docker compose down"
   },
   "author": "Joonas Häkkinen <joonashak@proton.me>",
