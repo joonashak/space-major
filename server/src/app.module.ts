@@ -1,5 +1,9 @@
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
-import { CloneBayModule } from '@joonashak/nestjs-clone-bay';
+import {
+  CloneBayModule,
+  CloneBayResolversModule,
+  CloneBaySsoModule,
+} from '@joonashak/nestjs-clone-bay';
 import { EveAuthModule } from '@joonashak/nestjs-eve-auth';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
@@ -24,9 +28,11 @@ import { AppService } from './app.service';
       clientId: process.env.CLIENT_ID,
       secretKey: process.env.SECRET_KEY,
       callbackUrl: process.env.SSO_CALLBACK_URL,
-      afterLoginUrl: 'http://localhost:3000',
+      afterLoginUrl: 'http://localhost:3001/',
     }),
     CloneBayModule,
+    CloneBaySsoModule,
+    CloneBayResolversModule,
   ],
   controllers: [AppController],
   providers: [AppService],
