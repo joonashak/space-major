@@ -1,0 +1,32 @@
+services:
+  mongo:
+    image: mongo:5.0-focal
+    restart: unless-stopped
+    container_name: space-major-db
+    volumes:
+      - type: volume
+        source: space-major-data
+        target: /data/db
+        volume:
+          nocopy: true
+    ports:
+      - 27017:27017
+
+  server:
+    build: ./server/
+    ports:
+      - 3001:3001
+    container_name: space-major-server
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - MONGO_URL=mongodb://mongo/space-major-dev
+    env_file:
+      - .env
+    volumes:
+      - ./server/src:/usr/src/app/src
+    depends_on:
+      - mongo
+
+volumes:
+  space-major-data:
