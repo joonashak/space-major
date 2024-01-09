@@ -30,5 +30,13 @@ services:
     depends_on:
       - mongo
 
+  web:
+    build: ./web/
+    ports:
+      - 3000:3000
+    container_name: space-major-web
+    volumes:
+      - ./web/src:/usr/src/app/src
+
 volumes:
   space-major-data:

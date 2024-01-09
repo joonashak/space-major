@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "start": "docker compose up --build -d && docker compose logs -f server",
-    "stop": "docker compose down"
+    "start": "docker compose up --build -d && npm run logs",
+    "stop": "docker compose down",
+    "logs": "docker compose logs -f server web"
   },
   "author": "Joonas Häkkinen <joonashak@proton.me>",
   "license": "MIT",
