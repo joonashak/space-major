@@ -22,6 +22,7 @@ services:
       - PORT=3001
       - MONGO_URL=mongodb://mongo/space-major-dev
       - SESSION_SECRET=puritnsb89
+      - SSO_CALLBACK_URL=http://localhost:3000/sso/callback
     env_file:
       - .env
     volumes:
