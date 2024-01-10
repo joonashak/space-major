@@ -38,6 +38,7 @@ services:
       - 3000:3000
     environment:
       - VITE_GRAPHQL_URL=http://localhost:3001/graphql
+      - VITE_SSO_LOGIN_URL=http://localhost:3001/sso/login
     volumes:
       - ./web/src:/usr/src/app/src
 

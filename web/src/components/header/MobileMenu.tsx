@@ -4,7 +4,7 @@ import Navigator from "../navigator/Navigator";
 const MobileMenu = (props: DrawerProps) => {
   return (
     <Drawer anchor="top" {...props}>
-      <Box sx={{ m: 1 }}>
+      <Box sx={{ m: 1, height: 1 }}>
         <Navigator />
       </Box>
     </Drawer>
