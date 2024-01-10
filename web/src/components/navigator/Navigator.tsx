@@ -6,6 +6,7 @@ import { Box, Divider, List, Option, Select } from "@mui/joy";
 import { WhoamiDocument } from "../../generated/graphql-operations";
 import LoginButton from "./LoginButton";
 import NavigationButton from "./NavigationButton";
+import UserMenu from "./UserMenu";
 
 const Navigator = () => {
   const { error } = useQuery(WhoamiDocument);
@@ -37,9 +38,7 @@ const Navigator = () => {
         </List>
       </Box>
       <Divider />
-      <Box sx={{ mt: 1 }}>
-        <LoginButton />
-      </Box>
+      <Box sx={{ mt: 1 }}>{loggedIn ? <UserMenu /> : <LoginButton />}</Box>
     </Box>
   );
 };

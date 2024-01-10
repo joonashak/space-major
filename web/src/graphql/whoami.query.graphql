@@ -1,5 +1,16 @@
 query Whoami {
   whoami {
-    id
+    main {
+      eveId
+      name
+      corporation {
+        name
+        ticker
+      }
+      alliance {
+        name
+        ticker
+      }
+    }
   }
 }
