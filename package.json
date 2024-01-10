@@ -5,7 +5,9 @@
   "scripts": {
     "start": "docker compose up --build -d && npm run logs",
     "stop": "docker compose down",
-    "logs": "docker compose logs -f server web"
+    "restart": "npm run stop && npm run start",
+    "logs": "docker compose logs -f server web",
+    "generate": "cd web && npm run generate"
   },
   "author": "Joonas Häkkinen <joonashak@proton.me>",
   "license": "MIT",
