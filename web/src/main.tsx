@@ -4,16 +4,25 @@ import { CssBaseline } from "@mui/joy";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import AuthenticationGuard from "./AuthenticationGuard.tsx";
 import Dashboard from "./Dashboard.tsx";
 import ErrorPage from "./ErrorPage.tsx";
 import Layout from "./Layout.tsx";
+import LoginPage from "./LoginPage.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     errorElement: <ErrorPage />,
-    children: [{ path: "/", element: <Dashboard /> }],
+    children: [
+      {
+        path: "/",
+        element: <AuthenticationGuard />,
+        errorElement: <LoginPage />,
+        children: [{ path: "/", element: <Dashboard /> }],
+      },
+    ],
   },
 ]);
 
