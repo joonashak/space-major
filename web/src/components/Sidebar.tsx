@@ -1,5 +1,5 @@
 import { Box } from "@mui/joy";
-import Navigator from "./Navigator";
+import Navigator from "./navigator/Navigator";
 
 const Sidebar = () => (
   <Box

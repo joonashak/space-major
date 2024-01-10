@@ -5,10 +5,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AuthenticationGuard from "./AuthenticationGuard.tsx";
-import Dashboard from "./Dashboard.tsx";
-import ErrorPage from "./ErrorPage.tsx";
 import Layout from "./Layout.tsx";
-import LoginPage from "./LoginPage.tsx";
+import Dashboard from "./pages/Dashboard.tsx";
+import ErrorPage from "./pages/ErrorPage.tsx";
+import LoginPage from "./pages/LoginPage.tsx";
 
 const router = createBrowserRouter([
   {
