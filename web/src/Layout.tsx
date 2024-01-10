@@ -1,9 +1,14 @@
+import { useQuery } from "@apollo/client";
 import { Box } from "@mui/joy";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import { WhoamiDocument } from "./generated/graphql-operations";
 
 const Layout = () => {
+  const { data, error } = useQuery(WhoamiDocument);
+  console.log(data);
+  console.log(error);
   return (
     <Box
       sx={(theme) => ({

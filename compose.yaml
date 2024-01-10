@@ -1,8 +1,8 @@
 services:
   mongo:
+    container_name: space-major-db
     image: mongo:5.0-focal
     restart: unless-stopped
-    container_name: space-major-db
     volumes:
       - type: volume
         source: space-major-data
@@ -13,16 +13,17 @@ services:
       - 27017:27017
 
   server:
+    container_name: space-major-server
     build: ./server/
     ports:
       - 3001:3001
-    container_name: space-major-server
     environment:
       - NODE_ENV=development
       - PORT=3001
       - MONGO_URL=mongodb://mongo/space-major-dev
       - SESSION_SECRET=puritnsb89
       - SSO_CALLBACK_URL=http://localhost:3001/sso/callback
+      - CLIENT_URL=http://localhost:3000
     env_file:
       - .env
     volumes:
@@ -31,10 +32,12 @@ services:
       - mongo
 
   web:
+    container_name: space-major-web
     build: ./web/
     ports:
       - 3000:3000
-    container_name: space-major-web
+    environment:
+      - VITE_GRAPHQL_URL=http://localhost:3001/graphql
     volumes:
       - ./web/src:/usr/src/app/src
 

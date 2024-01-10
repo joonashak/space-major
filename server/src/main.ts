@@ -5,7 +5,10 @@ import mongoose from 'mongoose';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    cors: { origin: process.env.CLIENT_URL, credentials: true },
+  });
+
   app.use(
     session({
       secret: process.env.SESSION_SECRET,
@@ -16,7 +19,9 @@ async function bootstrap() {
       }),
     }),
   );
+
   mongoose.set('debug', true);
+
   await app.listen(process.env.PORT);
 }
 bootstrap();
