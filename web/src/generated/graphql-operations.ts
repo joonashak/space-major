@@ -39,6 +39,7 @@ export type Corporation = {
 
 export type CreateOperationInput = {
   name: Scalars['String']['input'];
+  shortName: Scalars['String']['input'];
 };
 
 export type EveAccessToken = {
@@ -68,14 +69,21 @@ export type Operation = {
   id: Scalars['String']['output'];
   leader: User;
   name: Scalars['String']['output'];
+  shortName: Scalars['String']['output'];
 };
 
 export type Query = {
   __typename?: 'Query';
   findAllOperations: Array<Operation>;
+  findOperation: Operation;
   getAllUsers: Array<User>;
   getMyTokens: Array<EveAccessToken>;
   whoami: User;
+};
+
+
+export type QueryFindOperationArgs = {
+  shortName: Scalars['String']['input'];
 };
 
 export type User = {
@@ -91,6 +99,13 @@ export type FindAllOperationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type FindAllOperationsQuery = { __typename?: 'Query', findAllOperations: Array<{ __typename?: 'Operation', id: string, name: string }> };
 
+export type FindOperationQueryVariables = Exact<{
+  shortName: Scalars['String']['input'];
+}>;
+
+
+export type FindOperationQuery = { __typename?: 'Query', findOperation: { __typename?: 'Operation', id: string, name: string, leader: { __typename?: 'User', main: { __typename?: 'Character', name: string } } } };
+
 export type WhoamiQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -98,4 +113,5 @@ export type WhoamiQuery = { __typename?: 'Query', whoami: { __typename?: 'User',
 
 
 export const FindAllOperationsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FindAllOperations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"findAllOperations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<FindAllOperationsQuery, FindAllOperationsQueryVariables>;
+export const FindOperationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FindOperation"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"shortName"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"findOperation"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"shortName"},"value":{"kind":"Variable","name":{"kind":"Name","value":"shortName"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"leader"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"main"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<FindOperationQuery, FindOperationQueryVariables>;
 export const WhoamiDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Whoami"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"whoami"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"main"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"eveId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"corporation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"ticker"}}]}},{"kind":"Field","name":{"kind":"Name","value":"alliance"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"ticker"}}]}}]}}]}}]}}]} as unknown as DocumentNode<WhoamiQuery, WhoamiQueryVariables>;

@@ -17,4 +17,9 @@ export class OperationService {
   async findAll(): Promise<Operation[]> {
     return this.operationModel.find({}).populate('leader');
   }
+
+  async findByShortName(shortName: string): Promise<OperationDocument> {
+    // FIXME: Some `leader` fields need to be protected, otherwise someone could write a query to see, e.g., leaders alts. Probably a job for clone-bay.
+    return this.operationModel.findOne({ shortName }).populate('leader');
+  }
 }

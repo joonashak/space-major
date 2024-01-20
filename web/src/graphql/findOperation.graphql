@@ -1,0 +1,11 @@
+query FindOperation($shortName: String!) {
+  findOperation(shortName: $shortName) {
+    id
+    name
+    leader {
+      main {
+        name
+      }
+    }
+  }
+}

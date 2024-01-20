@@ -26,9 +26,19 @@ export class OperationResolver {
     return this.operationService.create({ ...operation, leader: user });
   }
 
+  // TODO: Limit access.
   @RequireAuthentication()
   @Query(() => [Operation])
   async findAllOperations(): Promise<Operation[]> {
     return this.operationService.findAll();
+  }
+
+  // TODO: Limit access.
+  @RequireAuthentication()
+  @Query(() => Operation)
+  async findOperation(
+    @Args('shortName') shortName: string,
+  ): Promise<Operation> {
+    return this.operationService.findByShortName(shortName);
   }
 }
