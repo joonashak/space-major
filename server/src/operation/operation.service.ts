@@ -13,4 +13,8 @@ export class OperationService {
   async create(operation: Operation): Promise<OperationDocument> {
     return (await this.operationModel.create(operation)).populate('leader');
   }
+
+  async findAll(): Promise<Operation[]> {
+    return this.operationModel.find({}).populate('leader');
+  }
 }

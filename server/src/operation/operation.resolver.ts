@@ -3,7 +3,7 @@ import {
   RequireAuthentication,
   UserId,
 } from '@joonashak/nestjs-clone-bay';
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Operation } from './operation.model';
 import { OperationService } from './operation.service';
 
@@ -23,5 +23,11 @@ export class OperationResolver {
   ): Promise<Operation> {
     const user = await this.userService.findById(userId);
     return this.operationService.create({ name, leader: user });
+  }
+
+  @RequireAuthentication()
+  @Query(() => [Operation])
+  async findAllOperations(): Promise<Operation[]> {
+    return this.operationService.findAll();
   }
 }
