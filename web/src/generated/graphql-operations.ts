@@ -37,6 +37,10 @@ export type Corporation = {
   ticker: Scalars['String']['output'];
 };
 
+export type CreateOperationInput = {
+  name: Scalars['String']['input'];
+};
+
 export type EveAccessToken = {
   __typename?: 'EveAccessToken';
   accessToken: Scalars['String']['output'];
@@ -45,7 +49,13 @@ export type EveAccessToken = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createOperation: Operation;
   refreshToken: EveAccessToken;
+};
+
+
+export type MutationCreateOperationArgs = {
+  operation: CreateOperationInput;
 };
 
 
@@ -53,18 +63,33 @@ export type MutationRefreshTokenArgs = {
   characterEveId: Scalars['Float']['input'];
 };
 
+export type Operation = {
+  __typename?: 'Operation';
+  id: Scalars['String']['output'];
+  leader: User;
+  name: Scalars['String']['output'];
+};
+
 export type Query = {
   __typename?: 'Query';
+  findAllOperations: Array<Operation>;
+  getAllUsers: Array<User>;
   getMyTokens: Array<EveAccessToken>;
   whoami: User;
 };
 
 export type User = {
   __typename?: 'User';
+  admin: Scalars['Boolean']['output'];
   alts: Array<Character>;
   id: Scalars['String']['output'];
   main: Character;
 };
+
+export type FindAllOperationsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FindAllOperationsQuery = { __typename?: 'Query', findAllOperations: Array<{ __typename?: 'Operation', id: string, name: string }> };
 
 export type WhoamiQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -72,4 +97,5 @@ export type WhoamiQueryVariables = Exact<{ [key: string]: never; }>;
 export type WhoamiQuery = { __typename?: 'Query', whoami: { __typename?: 'User', main: { __typename?: 'Character', eveId: number, name: string, corporation: { __typename?: 'Corporation', name: string, ticker: string }, alliance?: { __typename?: 'Alliance', name: string, ticker: string } | null } } };
 
 
+export const FindAllOperationsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FindAllOperations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"findAllOperations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<FindAllOperationsQuery, FindAllOperationsQueryVariables>;
 export const WhoamiDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Whoami"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"whoami"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"main"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"eveId"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"corporation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"ticker"}}]}},{"kind":"Field","name":{"kind":"Name","value":"alliance"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"ticker"}}]}}]}}]}}]}}]} as unknown as DocumentNode<WhoamiQuery, WhoamiQueryVariables>;

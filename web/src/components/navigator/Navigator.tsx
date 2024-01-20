@@ -2,10 +2,11 @@ import { useQuery } from "@apollo/client";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import PolicyRoundedIcon from "@mui/icons-material/PolicyRounded";
 import SpaceDashboardRoundedIcon from "@mui/icons-material/SpaceDashboardRounded";
-import { Box, Divider, List, Option, Select } from "@mui/joy";
+import { Box, Divider, List } from "@mui/joy";
 import { WhoamiDocument } from "../../generated/graphql-operations";
 import LoginButton from "./LoginButton";
 import NavigationButton from "./NavigationButton";
+import OperationSelect from "./OperationSelect";
 import UserMenu from "./UserMenu";
 
 const Navigator = () => {
@@ -15,16 +16,7 @@ const Navigator = () => {
   return (
     <Box sx={{ width: 1, height: 1, display: "flex", flexDirection: "column" }}>
       <Box>
-        <Select
-          color="primary"
-          placeholder="Choose one…"
-          size="md"
-          variant="outlined"
-          sx={{ mt: 1, mb: 2 }}
-        >
-          <Option value={1}>Mega Op</Option>
-          <Option value={2}>Nice Op</Option>
-        </Select>
+        <OperationSelect />
       </Box>
       <Box sx={{ flexGrow: 1 }}>
         <List sx={{ gap: 1 }}>

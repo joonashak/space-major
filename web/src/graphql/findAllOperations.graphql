@@ -1,0 +1,6 @@
+query FindAllOperations {
+  findAllOperations {
+    id
+    name
+  }
+}
