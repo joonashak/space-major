@@ -1,5 +1,10 @@
 import { Box } from "@mui/joy";
+import { useParams } from "react-router-dom";
 
-const Dashboard = () => <Box>Dashboard</Box>;
+const Dashboard = () => {
+  const { opName } = useParams();
+
+  return <Box>Dashboard: {opName}</Box>;
+};
 
 export default Dashboard;
