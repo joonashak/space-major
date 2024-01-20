@@ -1,7 +1,7 @@
 import { User } from '@joonashak/nestjs-clone-bay';
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, SchemaTimestampsConfig } from 'mongoose';
+import mongoose, { Document, SchemaTimestampsConfig } from 'mongoose';
 
 @ObjectType()
 @Schema({ timestamps: true })
@@ -11,7 +11,7 @@ export class Operation {
   name: string;
 
   @Field(() => User)
-  @Prop({ type: User })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: User.name })
   leader: User;
 }
 
