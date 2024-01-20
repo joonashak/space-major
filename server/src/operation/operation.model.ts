@@ -12,11 +12,24 @@ export class Operation {
   id: string;
 
   @Field()
-  @Prop()
+  @Prop({ required: true })
   name: string;
 
+  /**
+   * Short and canonical name for use in URLs etc.
+   *
+   * Unique and immutable to protect against breaking hyperlinks.
+   */
+  @Field()
+  @Prop({ unique: true, required: true, immutable: true })
+  shortName: string;
+
   @Field(() => User)
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: User.name })
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User.name,
+    required: true,
+  })
   leader: User;
 }
 

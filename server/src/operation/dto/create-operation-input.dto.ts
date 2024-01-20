@@ -4,6 +4,6 @@ import { Operation } from '../operation.model';
 @InputType()
 export class CreateOperationInput extends PickType(
   Operation,
-  ['name'],
+  ['name', 'shortName'],
   InputType,
 ) {}
