@@ -1,13 +1,8 @@
-import { useQuery } from "@apollo/client";
 import { Box } from "@mui/joy";
-import { useParams } from "react-router-dom";
-import { FindOperationDocument } from "../generated/graphql-operations";
+import useOperationQuery from "../hook/useOperationQuery";
 
 const Dashboard = () => {
-  const { opName } = useParams();
-  const { data } = useQuery(FindOperationDocument, {
-    variables: { shortName: opName || "" },
-  });
+  const { data } = useOperationQuery();
 
   if (!data) {
     return null;
