@@ -11,6 +11,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { OperationModule } from './operation/operation.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { AppService } from './app.service';
     CloneBayModule,
     CloneBaySsoModule,
     CloneBayResolversModule,
+    OperationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
