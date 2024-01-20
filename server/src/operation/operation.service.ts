@@ -10,7 +10,7 @@ export class OperationService {
     private operationModel: Model<OperationDocument>,
   ) {}
 
-  async create(operation: Operation): Promise<OperationDocument> {
+  async create(operation: Omit<Operation, 'id'>): Promise<OperationDocument> {
     return (await this.operationModel.create(operation)).populate('leader');
   }
 

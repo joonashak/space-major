@@ -1,11 +1,16 @@
 import { User } from '@joonashak/nestjs-clone-bay';
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { randomUUID } from 'crypto';
 import mongoose, { Document, SchemaTimestampsConfig } from 'mongoose';
 
 @ObjectType()
 @Schema({ timestamps: true })
 export class Operation {
+  @Field()
+  @Prop({ default: randomUUID })
+  id: string;
+
   @Field()
   @Prop()
   name: string;
