@@ -1,7 +1,7 @@
 services:
   mongo:
     container_name: space-major-db
-    image: mongo:5.0-focal
+    image: mongo:7.0
     restart: unless-stopped
     volumes:
       - type: volume
